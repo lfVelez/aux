@@ -1,0 +1,8 @@
+# Version:1.0 MMMC View Definition File
+# Do Not Remove Above Line
+create_rc_corner -name myCorner -cap_table {/eda/technologies/ams/cds/HK_C35/LEF/encounter/c35b4-typical.capTable} -T {25} -preRoute_res {1.0} -preRoute_cap {1.0} -preRoute_clkres {0.0} -preRoute_clkcap {0.0} -postRoute_res {1.0} -postRoute_cap {1.0} -postRoute_xcap {1.0} -postRoute_clkres {0.0} -postRoute_clkcap {0.0}
+create_library_set -name myLibSet -timing {/eda/technologies/ams/liberty/c35_3.3V/c35_CORELIB_TYP.lib}
+create_constraint_mode -name myconstraint -sdc_files {/home/mcre214/Semi-Labs/P2/COUNTER8.sdc}
+create_delay_corner -name mydelay -library_set {myLibSet} -rc_corner {myCorner}
+create_analysis_view -name myview -constraint_mode {myconstraint} -delay_corner {mydelay}
+set_analysis_view -setup {myview} -hold {myview}
